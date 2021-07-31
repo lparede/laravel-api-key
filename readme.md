@@ -104,14 +104,14 @@ Route example
 ```php
 Route::get('api/user/1', function () {
     //
-})->middleware('auth.api-key');
+})->middleware('auth-api-key');
 
 ```
 or
 ```php
 Route::get('api/user/1', function () {
     //
-})->middleware('auth.api-key-name:app1');
+})->middleware('auth-api-name:app1');
 
 ```
 

@@ -53,10 +53,10 @@ class ApiKeyServiceProvider extends ServiceProvider
         $versionComparison = version_compare(app()->version(), '5.4.0');
 
         if ($versionComparison >= 0) {
-            $router->aliasMiddleware('auth-api-key', AuthorizeApiKey::class);
+			$router->aliasMiddleware('auth-api-key', AuthorizeApiKey::class);
 			$router->aliasMiddleware('auth-api-name', AuthorizeApiName::class);
         } else {
-            $router->middleware('auth-api-key', AuthorizeApiKey::class);
+			$router->middleware('auth-api-key', AuthorizeApiKey::class);
 			$router->middleware('auth-api-name', AuthorizeApiKey::class);
         }
     }

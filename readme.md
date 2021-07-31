@@ -1,6 +1,11 @@
 Laravel API Key Auth
 ========
 
+<a href="https://packagist.org/packages/lparede/laravel-api-key"><img src="https://poser.pugx.org/lparede/laravel-api-key/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/lparede/laravel-api-key"><img src="https://poser.pugx.org/lparede/laravel-api-key/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/lparede/laravel-api-key"><img src="https://poser.pugx.org/lparede/laravel-api-key/license.svg" alt="License"></a>
+
+
 ## About this Repository
 
 This repository was forked from [ejarnutowski/laravel-api-key](https://github.com/ejarnutowski/laravel-api-key).

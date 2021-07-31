@@ -122,7 +122,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api-key');
+        $this->middleware('auth-api-key');
     }
 }
 ```
@@ -137,7 +137,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.api-key-name:app1');
+        $this->middleware('auth-api-name:app1');
     }
 }
 ```

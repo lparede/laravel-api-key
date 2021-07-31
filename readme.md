@@ -1,20 +1,22 @@
 Laravel API Key Auth
 ========
 
-<a href="https://packagist.org/packages/ejarnutowski/laravel-api-key"><img src="https://poser.pugx.org/ejarnutowski/laravel-api-key/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/ejarnutowski/laravel-api-key"><img src="https://poser.pugx.org/ejarnutowski/laravel-api-key/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/ejarnutowski/laravel-api-key"><img src="https://poser.pugx.org/ejarnutowski/laravel-api-key/license.svg" alt="License"></a>
+## About this Repository
+
+This repository was forked from [ejarnutowski/laravel-api-key](https://github.com/ejarnutowski/laravel-api-key).
+
+The `auth.apikey` middleware was renamed to `auth-api-key` and a new `auth-api-name` middleware was added.
 
 ## Installation
 
-Run `composer require ejarnutowski/laravel-api-key`.
+Run `composer require lparede/laravel-api-key`.
 
 In your `config/app.php` file, add the Laravel API Key service provider to the end of the `providers` array.
 
 ```php
 'providers' => [
     ...
-    Ejarnutowski\LaravelApiKey\Providers\ApiKeyServiceProvider::class,
+    Lparede\LaravelApiKey\Providers\ApiKeyServiceProvider::class,
 ],
 ```
 
@@ -90,14 +92,21 @@ $ php artisan apikey:list -D
 
 ### Implementing Authorization
 
-A new `auth.apikey` route middleware has been registered for you to use in your routes or controllers.  Below are examples on how to use middleware, but for detailed information, check out [Middleware](https://laravel.com/docs/middleware) in the Laravel Docs.
+A new `auth-api-key` and `auth-key-name` route middlewares has been registered for you to use in your routes or controllers.  Below are examples on how to use middleware, but for detailed information, check out [Middleware](https://laravel.com/docs/middleware) in the Laravel Docs.
 
 Route example
 
 ```php
 Route::get('api/user/1', function () {
     //
-})->middleware('auth.apikey');
+})->middleware('auth.api-key');
+
+```
+or
+```php
+Route::get('api/user/1', function () {
+    //
+})->middleware('auth.api-key-name:app1');
 
 ```
 
@@ -113,7 +122,22 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth.apikey');
+        $this->middleware('auth.api-key');
+    }
+}
+```
+or
+```php
+class UserController extends Controller
+{
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth.api-key-name:app1');
     }
 }
 ```

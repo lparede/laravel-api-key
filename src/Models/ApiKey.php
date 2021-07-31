@@ -1,6 +1,6 @@
 <?php
 
-namespace Ejarnutowski\LaravelApiKey\Models;
+namespace Lparede\LaravelApiKey\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -93,6 +93,21 @@ class ApiKey extends Model
     {
         return self::where([
             'key'    => $key,
+            'active' => 1
+        ])->first();
+    }
+
+    /**
+     * Get ApiKey record by key value ans key name
+     *
+     * @param string $key
+     * @return bool
+     */
+    public static function getByKeyName($key, $name)
+    {
+        return self::where([
+            'key'    => $key,
+            'name'   => $name,
             'active' => 1
         ])->first();
     }

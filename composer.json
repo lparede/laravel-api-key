@@ -1,5 +1,5 @@
 {
-    "name": "ejarnutowski/laravel-api-key",
+    "name": "lparede/laravel-api-key",
     "description": "Authorize requests to your Laravel application with API keys",
     "keywords": ["api", "api key", "authentication", "authorization", "laravel"],
     "license": "MIT",
@@ -15,13 +15,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Ejarnutowski\\LaravelApiKey\\": "src"
+            "Lparede\\LaravelApiKey\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "dont-discover": [
-                "ejarnutowski/laravel-api-key"
+                "lparede/laravel-api-key"
             ]
         }
     }

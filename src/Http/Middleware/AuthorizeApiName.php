@@ -7,7 +7,7 @@ use Lparede\LaravelApiKey\Models\ApiKey;
 use Lparede\LaravelApiKey\Models\ApiKeyAccessEvent;
 use Illuminate\Http\Request;
 
-class AuthorizeApiKey
+class AuthorizeApiName
 {
     const AUTH_HEADER = 'X-Authorization';
 
@@ -16,12 +16,13 @@ class AuthorizeApiKey
      *
      * @param Request $request
      * @param Closure $next
+     * @param Closure $name
      * @return \Illuminate\Contracts\Routing\ResponseFactory|mixed|\Symfony\Component\HttpFoundation\Response
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, String $name)
     {
         $header = $request->header(self::AUTH_HEADER);
-        $apiKey = ApiKey::getByKey($header);
+        $apiKey = ApiKey::getByKeyName($header, $name);
 
         if ($apiKey instanceof ApiKey) {
             $this->logAccessEvent($request, $apiKey);

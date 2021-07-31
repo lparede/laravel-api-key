@@ -1,13 +1,14 @@
 <?php
 
-namespace Ejarnutowski\LaravelApiKey\Providers;
+namespace Lparede\LaravelApiKey\Providers;
 
-use Ejarnutowski\LaravelApiKey\Console\Commands\ActivateApiKey;
-use Ejarnutowski\LaravelApiKey\Console\Commands\DeactivateApiKey;
-use Ejarnutowski\LaravelApiKey\Console\Commands\DeleteApiKey;
-use Ejarnutowski\LaravelApiKey\Console\Commands\GenerateApiKey;
-use Ejarnutowski\LaravelApiKey\Console\Commands\ListApiKeys;
-use Ejarnutowski\LaravelApiKey\Http\Middleware\AuthorizeApiKey;
+use Lparede\LaravelApiKey\Console\Commands\ActivateApiKey;
+use Lparede\LaravelApiKey\Console\Commands\DeactivateApiKey;
+use Lparede\LaravelApiKey\Console\Commands\DeleteApiKey;
+use Lparede\LaravelApiKey\Console\Commands\GenerateApiKey;
+use Lparede\LaravelApiKey\Console\Commands\ListApiKeys;
+use Lparede\LaravelApiKey\Http\Middleware\AuthorizeApiKey;
+use Lparede\LaravelApiKey\Http\Middleware\AuthorizeApiName;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 
@@ -52,9 +53,11 @@ class ApiKeyServiceProvider extends ServiceProvider
         $versionComparison = version_compare(app()->version(), '5.4.0');
 
         if ($versionComparison >= 0) {
-            $router->aliasMiddleware('auth.apikey', AuthorizeApiKey::class);
+            $router->aliasMiddleware('auth-api-key', AuthorizeApiKey::class);
+			$router->aliasMiddleware('auth-api-name', AuthorizeApiName::class);
         } else {
-            $router->middleware('auth.apikey', AuthorizeApiKey::class);
+            $router->middleware('auth-api-key', AuthorizeApiKey::class);
+			$router->middleware('auth-api-name', AuthorizeApiKey::class);
         }
     }
 

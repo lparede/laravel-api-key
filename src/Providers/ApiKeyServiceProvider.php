@@ -24,6 +24,7 @@ class ApiKeyServiceProvider extends ServiceProvider
     {
         $this->registerMiddleware($router);
         $this->registerMigrations(__DIR__ . '/../../database/migrations');
+        $this->registerConfig(__DIR__.'/../../config/laravel-api-key.php');
     }
 
     /**
@@ -69,5 +70,17 @@ class ApiKeyServiceProvider extends ServiceProvider
         $this->publishes([
             $migrationsDirectory => database_path('migrations')
         ], 'migrations');
+    }
+
+    /**
+     * Register config
+     */
+    protected function registerConfig($configDirectory)
+    {
+        $this->mergeConfigFrom($configDirectory, 'laravel-api-key');
+
+        $this->publishes([
+            $configDirectory => config_path('laravel-api-key.php'),
+        ], 'config');
     }
 }

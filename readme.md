@@ -25,7 +25,7 @@ In your `config/app.php` file, add the Laravel API Key service provider to the e
 ],
 ```
 
-Publish the migration files
+Publish the migration and config files
 
     $ php artisan vendor:publish
 

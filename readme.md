@@ -149,7 +149,7 @@ class UserController extends Controller
 
 ### Authorizing Requests
 
-In order to pass the `auth.apikey` middleware, requests must include an `X-Authorization` header as part of the request, with its value being an active API key.
+In order to pass the `auth-api-key` middleware, requests must include an `X-Authorization` header as part of the request, with its value being an active API key.
 
     X-Authorization: KuKMQbgZPv0PRC6GqCMlDQ7fgdamsVY75FrQvHfoIbw4gBaG5UX0wfk6dugKxrtW
 
